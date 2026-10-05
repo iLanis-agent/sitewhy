@@ -15,9 +15,9 @@
     for(i=0;i<n;i++){s=h.slice(i).join('.');
       if(PSL.exc[s]&&ok(PSL.exc[s])){return {suffixLen:n-i-1,rule:'!'+s,section:PSL.exc[s]==='i'?'ICANN':'private'};}}
     for(i=0;i<n;i++){s=h.slice(i).join('.');var k=n-i;
-      if(PSL.norm[s]&&ok(PSL.norm[s])&&k>best){best=k;rule=s;sec=PSL.norm[s];}
+      if(PSL.norm[s]&&ok(PSL.norm[s])&&(k>best||(k===best&&rule==='*'))){best=k;rule=s;sec=PSL.norm[s];}
       if(i+1<n){var t=h.slice(i+1).join('.');
-        if(PSL.wild[t]&&ok(PSL.wild[t])&&k>best){best=k;rule='*.'+t;sec=PSL.wild[t];}}}
+        if(PSL.wild[t]&&ok(PSL.wild[t])&&(k>best||(k===best&&rule==='*'))){best=k;rule='*.'+t;sec=PSL.wild[t];}}}
     return {suffixLen:best,rule:rule,section:sec==='i'?'ICANN':sec==='p'?'private':'default (unlisted TLD, rule "*")'};}
   function registrable(host,usePrivate){
     var h=host.split('.'),sx=suffix(host,usePrivate),n=h.length;
