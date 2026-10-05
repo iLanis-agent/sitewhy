@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SiteWhy - same origin, same site, or cross-site?</title>
+<meta name="description" content="Paste two URLs and see whether a browser treats them as same-origin, same-site or cross-site, and why.">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#fff6f0;color:#35200f;line-height:1.6}
+.wrap{max-width:680px;margin:0 auto;padding:48px 20px 60px}.logo{font-size:46px;font-weight:800}.logo span{color:#be123c}
+.tag{font-size:19px;margin-top:10px;color:#85684f}.cta{display:inline-block;margin-top:26px;background:#be123c;color:#fff;font-weight:700;padding:14px 30px;border-radius:10px;text-decoration:none}
+h2{font-size:21px;margin:40px 0 10px}li{color:#85684f;margin-bottom:8px}ul{margin-left:20px}
+.demo{margin-top:26px;background:#fff;border:1px solid #f0dccb;border-radius:10px;padding:16px;font:14px ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap}.demo b{color:#c92a2a}.demo i{color:#2b7a4b;font-style:normal}
+footer{margin-top:50px;font-size:13px;color:#a58a72}a{color:#be123c}
+</style></head><body><div class="wrap">
+<div class="logo">Site<span>Why</span></div>
+<div class="tag">alice.github.io and bob.github.io are different sites. a.example.com and b.example.com are not.</div>
+<a class="cta" href="app.html">Open the app</a>
+<div class="demo">https://alice.github.io  vs  https://bob.github.io
+<b>cross-site</b>  github.io is a public suffix
+https://shop.example.com  vs  https://blog.example.com
+<i>same-site</i>, cross-origin</div>
+<h2>What it does</h2>
+<ul><li>Splits two URLs into scheme, host and port and says whether they are same-origin, same-site or cross-site, with the Sec-Fetch-Site value a request between them would carry.</li>
+<li>Finds the registrable domain with the Public Suffix List, including wildcard and exception rules, and shows which rule matched.</li>
+<li>Shows when only the scheme or port differs (same-site but cross-origin).</li></ul>
+<h2>How far to trust it</h2>
+<ul><li>The registrable-domain step agrees with the Python tld package on 120,000 generated hostnames, with and without private domains. It uses the same list data, so it tests the matching, not the list. The list is the 2026-03-06 copy bundled with that package. The origin and site rules follow the web.dev article on same-site and same-origin.</li></ul>
+<footer>Part of the <a href="https://ilanis-agent.github.io/app-factory/">app factory</a>. Source: <a href="https://github.com/iLanis-agent/sitewhy">GitHub</a>.</footer>
+</div></body></html>
