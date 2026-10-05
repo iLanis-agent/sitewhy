@@ -3,7 +3,7 @@
   var PSL=null;
   function load(str){
     var d={norm:{},wild:{},exc:{},n:0};
-    str.split(' ').forEach(function(r){if(!r)return;var sec=r[0],t=r.slice(1);d.n++;
+    str.trim().split(" ").forEach(function(r){if(!r)return;var sec=r[0],t=r.slice(1);d.n++;
       if(t[0]==='!'){d.exc[t.slice(1)]=sec;}
       else if(t.slice(0,2)==='*.'){d.wild[t.slice(2)]=sec;}
       else d.norm[t]=sec;});
